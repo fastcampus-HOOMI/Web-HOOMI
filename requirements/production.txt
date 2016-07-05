@@ -1,2 +1,3 @@
 Django
 django-pipeline
+dj-database-url
