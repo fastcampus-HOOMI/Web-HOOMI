@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'pipeline',
 
     'users',
+    'jobs',
 ]
 
 MIDDLEWARE_CLASSES = [
