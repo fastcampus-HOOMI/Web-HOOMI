@@ -1,1 +1,1 @@
-from .user import UserCreateAPIView
+from .signup import UserCreateAPIView
