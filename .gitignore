@@ -90,3 +90,10 @@ ENV/
 
 #database
 db.sqlite3
+
+#tempfiles
+*.swp
+*.swo
+
+#Django migrations
+migrations
