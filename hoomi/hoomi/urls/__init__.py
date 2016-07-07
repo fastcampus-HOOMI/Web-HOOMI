@@ -1,5 +1,6 @@
 """hoomi URL Configuration
 
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
 Examples:
@@ -13,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 from django.http.response import HttpResponse
@@ -22,7 +23,10 @@ from django.http.response import HttpResponse
 def home(request):
     return HttpResponse("Hello HOOMI")
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
+    url(r'^api/', include('api.urls', namespace="api")),
+    url(r'^api-docs/', include('rest_framework_swagger.urls')),
 ]
