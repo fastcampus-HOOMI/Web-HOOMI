@@ -15,8 +15,8 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, password, **kwargs):
         user = self.create_user(
-                email=self.normalize_email(email),
-                **kwargs
+            email=self.normalize_email(email),
+            **kwargs
         )
         user.is_superuser = True
         user.is_admin = True
@@ -25,7 +25,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    job = models.ForeignKey(Job)
+    job = models.ForeignKey(
+        Job,
+        default=2,
+    )
     name = models.CharField(
             max_length=60,
     )
