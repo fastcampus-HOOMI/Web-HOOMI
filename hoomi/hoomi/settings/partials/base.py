@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'pipeline',
     'rest_framework',
     'rest_framework_swagger',
+
+    'users',
+    'jobs',
 ]
 
 MIDDLEWARE_CLASSES = [
