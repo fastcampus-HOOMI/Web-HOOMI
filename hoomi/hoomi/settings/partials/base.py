@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pipeline',
     'rest_framework',
     'rest_framework_swagger',
+    'social.apps.django_app.default',
 
     'users',
     'jobs',
@@ -75,6 +76,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
