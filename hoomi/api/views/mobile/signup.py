@@ -9,7 +9,7 @@ from rest_framework import status
 from api.serializers import UserSerializer
 
 
-class UserCreateAPIView(CreateAPIView):
+class MobileSignupAPIView(CreateAPIView):
     queryset = get_user_model()
     serializer_class = UserSerializer
     permission_classes = (AllowAny, )
