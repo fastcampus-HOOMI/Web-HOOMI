@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^api/', include('api.urls', namespace="api")),
     url(r'^api-docs/', include('rest_framework_swagger.urls')),
 
+    url(r'^', include('social.apps.django_app.urls', namespace='social')),
     url(r'^', include("users.urls", namespace='usrers')),
 ]
