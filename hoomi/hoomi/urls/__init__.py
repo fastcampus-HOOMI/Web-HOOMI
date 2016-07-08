@@ -1,5 +1,6 @@
 """hoomi URL Configuration
 
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
 Examples:
@@ -22,9 +23,12 @@ from django.http.response import HttpResponse
 def home(request):
     return HttpResponse("Hello HOOMI")
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^', include('social.apps.django_app.urls', namespace='social')),
     url(r'^', include("users.urls", namespace='usrers')),
+    url(r'^api/', include('api.urls', namespace="api")),
+    url(r'^api-docs/', include('rest_framework_swagger.urls')),
 ]
