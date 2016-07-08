@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pipeline',
     'rest_framework',
     'rest_framework_swagger',
+    'social.apps.django_app.default',
 
     'users',
     'jobs',
