@@ -25,6 +25,6 @@ def home(request):
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
-
+    url(r'^', include('social.apps.django_app.urls', namespace='social')),
     url(r'^', include("users.urls", namespace='usrers')),
 ]
