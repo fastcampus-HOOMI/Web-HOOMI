@@ -25,6 +25,7 @@ def home(request):
 
 
 urlpatterns = [
+    url(r'^', include("users.urls", namespace='usrers')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^api/', include('api.urls', namespace="api")),
