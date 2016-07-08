@@ -141,6 +141,7 @@ STATICFILES_DIR = [
         os.path.join(BASE_DIR, "hoomi", "static"),
 ]
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "media")
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (
