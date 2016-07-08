@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pipeline',
+    'rest_framework',
+    'rest_framework_swagger',
+    'social.apps.django_app.default',
 
     'users',
     'jobs',
