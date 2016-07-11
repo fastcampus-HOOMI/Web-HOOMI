@@ -1,10 +1,26 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from jobs.models import Job
 
 
+class HoomiUserManager(UserManager):
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except:
+            return None
+
+
 class User(AbstractUser):
+    objects = HoomiUserManager()
+
     job = models.ForeignKey(
         Job,
         default=1,
     )
+
+    def social_get_or_none(self, user, **kwargs):
+        try:
+            return user.social_auth.get(**kwargs)
+        except:
+            return None
