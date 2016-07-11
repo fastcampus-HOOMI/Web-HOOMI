@@ -26,7 +26,7 @@ class MobileLoginAPIView(JSONWebTokenAPIView):
             jwt_token = serializer.object.get('token')
             response_data = jwt_response_payload_handler(jwt_token, user, request)
 
-            return Response(response_data, status=status.HTTP_201_CREATED)
+            return Response(response_data, status=status.HTTP_200_OK)
 
         response_data = {"Error": "Unable to login with provided credentials"}
         return Response(response_data, status=status.HTTP_401_UNAUTHORIZED)
