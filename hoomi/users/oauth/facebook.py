@@ -19,10 +19,7 @@ class FacebookOAuth(BaseOAuth):
 
         return user_data.json()
 
-    def login(self, user):
-        social_user = UserSocialAuth.objects.get(user_id=user.id)
-        access_token = social_user.extra_data.get("access_token")
-
+    def login(self, access_token):
         verify = requests.post(
             self.USER_DATA_URL,
             params={
