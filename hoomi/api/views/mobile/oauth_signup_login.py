@@ -62,7 +62,7 @@ class MobileOAuthSignupLoginAPIView(APIView):
                 status.HTTP_406_NOT_ACCEPTABLE,
             )
 
-        verify_user = get_user_model().objects.get_or_none(email=user_extra_data.get("email"))
+        verify_user = get_user_model().objects.get_or_none(username=user_extra_data.get("email"))
 
         if verify_user:
             if verify_user.social_get_or_none(user=verify_user, user_id=verify_user.id):
@@ -83,8 +83,8 @@ class MobileOAuthSignupLoginAPIView(APIView):
         hashids = Hashids(salt="iHA8aVD/", min_length=12)
 
         user = get_user_model().objects.create_user(
-            username=user_extra_data.get("email"),
-            email=user_extra_data.get("email"),
+            username=user_extra_data.get("username"),
+            email=user_extra_data.get("username"),
             first_name=user_extra_data.get("first_name"),
             last_name=user_extra_data.get("last_name"),
             password=hashids.encode(random.randint(1, 10000)),
