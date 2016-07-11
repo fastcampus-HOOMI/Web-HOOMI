@@ -10,6 +10,9 @@ from api.serializers import UserSerializer
 
 
 class MobileSignupAPIView(CreateAPIView):
+    """
+    Mobile 일반 회원가입
+    """
     queryset = get_user_model()
     serializer_class = UserSerializer
     permission_classes = (AllowAny, )
