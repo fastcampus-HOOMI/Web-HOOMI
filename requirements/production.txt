@@ -10,3 +10,4 @@ djangorestframework
 django-rest-swagger
 djangorestframework-jwt
 python-social-auth
+hashids
