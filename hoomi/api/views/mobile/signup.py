@@ -19,11 +19,11 @@ class MobileSignupAPIView(CreateAPIView):
     authentication_classes = ()
 
     def post(self, request, *args, **kwargs):
-        email = request.POST.get("email")
+        username = request.POST.get("username")
         password = request.POST.get("password")
 
         user = authenticate(
-            email=email,
+            username=username,
             password=password,
         )
 
