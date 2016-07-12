@@ -93,12 +93,12 @@ class MobileOAuthSignupLoginAPIView(APIView):
         social_user_data = {
             "access_token": access_token,
             "expires": "null",
-            "id": user_extra_data.id,
+            "id": user_extra_data.get('id'),
         }
 
         social_user = UserSocialAuth.objects.create(
             provider=provider,
-            uid=user_extra_data.id,
+            uid=user_extra_data.get('id'),
             extra_data=social_user_data,
             user_id=user.id,
         )
