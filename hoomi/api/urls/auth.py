@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 
 from rest_framework_jwt.views import obtain_jwt_token
 
-from api.views.mobile import *
+from api.views.auth import *
 
 urlpatterns = [
     url(r'^signup/$', MobileSignupAPIView.as_view(), name="signup"),
