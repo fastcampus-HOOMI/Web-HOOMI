@@ -83,8 +83,8 @@ class MobileOAuthSignupLoginAPIView(APIView):
         hashids = Hashids(salt="iHA8aVD/", min_length=12)
 
         user = get_user_model().objects.create_user(
-            username=user_extra_data.get("username"),
-            email=user_extra_data.get("username"),
+            username=user_extra_data.get("email"),
+            email=user_extra_data.get("email"),
             first_name=user_extra_data.get("first_name"),
             last_name=user_extra_data.get("last_name"),
             password=hashids.encode(random.randint(1, 10000)),
@@ -93,12 +93,12 @@ class MobileOAuthSignupLoginAPIView(APIView):
         social_user_data = {
             "access_token": access_token,
             "expires": "null",
-            "id": user_extra_data.id,
+            "id": user_extra_data.get('id'),
         }
 
         social_user = UserSocialAuth.objects.create(
             provider=provider,
-            uid=user_extra_data.id,
+            uid=user_extra_data.get('id'),
             extra_data=social_user_data,
             user_id=user.id,
         )
