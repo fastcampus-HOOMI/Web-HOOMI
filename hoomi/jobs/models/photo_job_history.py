@@ -44,7 +44,9 @@ def user_directory_path(instance, filename):
 class PhotoJobHistory(AbstractJobHistory):
 
     image = models.ImageField(
-        upload_to=user_directory_path
+        upload_to=user_directory_path,
+        blank=True,
+        null=True,
     )
 
     def __str__(self):

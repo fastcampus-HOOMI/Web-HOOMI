@@ -11,6 +11,12 @@ class AbstractJobHistory(models.Model):
 
     content = models.CharField(max_length=100,)
 
+    hash_id = models.CharField(
+        max_length=5,
+        blank=True,
+        null=True,
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     updated_at = models.DateTimeField(auto_now=True)
