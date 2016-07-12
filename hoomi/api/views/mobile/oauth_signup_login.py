@@ -83,8 +83,8 @@ class MobileOAuthSignupLoginAPIView(APIView):
         hashids = Hashids(salt="iHA8aVD/", min_length=12)
 
         user = get_user_model().objects.create_user(
-            username=user_extra_data.get("username"),
-            email=user_extra_data.get("username"),
+            username=user_extra_data.get("email"),
+            email=user_extra_data.get("email"),
             first_name=user_extra_data.get("first_name"),
             last_name=user_extra_data.get("last_name"),
             password=hashids.encode(random.randint(1, 10000)),
