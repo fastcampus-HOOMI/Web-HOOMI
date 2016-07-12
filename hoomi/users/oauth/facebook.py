@@ -13,18 +13,8 @@ class FacebookOAuth(BaseOAuth):
             self.USER_DATA_URL,
             params={
                 "access_token": access_token,
-                "fields": "email, name",
+                "fields": "email, first_name, last_name",
             }
         )
 
         return user_data.json()
-
-    def login(self, access_token):
-        verify = requests.post(
-            self.USER_DATA_URL,
-            params={
-                "access_token": access_token,
-            }
-        )
-
-        return verify.json()
