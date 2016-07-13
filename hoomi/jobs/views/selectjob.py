@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.core.urlresolvers import reverse
-from .base import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class SelectJob(LoginRequiredMixin, View):
@@ -19,4 +19,4 @@ class SelectJob(LoginRequiredMixin, View):
         value = request.POST.get("jobtitle")
         request.user.job_id = int(value)
         request.user.save()
-        return redirect("jobs:careerlist")
+        return redirect("jobs:job_history")

@@ -1,1 +1,0 @@
-from .careerlist import CareerList
