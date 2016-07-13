@@ -3,6 +3,6 @@ from jobs.views import *
 
 
 urlpatterns = [
-        url(r'^main/$', JobHistory.as_view(), name="job_history"),
-        url(r'^selectjob/$', SelectJob.as_view(), name="select_job"),
+        url(r'^main/$', History.as_view(), name="history"),
+        url(r'^select/$', Select.as_view(), name="select"),
 ]

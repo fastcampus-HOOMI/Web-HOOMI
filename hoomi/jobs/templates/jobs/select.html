@@ -1,6 +1,6 @@
 <h1>job select</h1>
 <section>
-    <form action="{% url "jobs:select_job" %}" method="POST">
+    <form action="{% url "jobs:select" %}" method="POST">
         {% csrf_token %}
         <select name="jobtitle">
             <option value="2">Photographer</option>

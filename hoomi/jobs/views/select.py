@@ -4,13 +4,13 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class SelectJob(LoginRequiredMixin, View):
+class Select(LoginRequiredMixin, View):
     login_url = '/login/'
 
     def get(self, request, *args, **kwargs):
         return render(
                 request,
-                "jobs/selectjob.html",
+                "jobs/select.html",
                 context={}
         )
 
@@ -19,4 +19,4 @@ class SelectJob(LoginRequiredMixin, View):
         value = request.POST.get("jobtitle")
         request.user.job_id = int(value)
         request.user.save()
-        return redirect("jobs:job_history")
+        return redirect("jobs:history")
