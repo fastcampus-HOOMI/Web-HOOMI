@@ -1,0 +1,12 @@
+<h1>job select</h1>
+<section>
+    <form action="{% url "jobs:selectjob" %}" method="POST">
+        {% csrf_token %}
+        <select name="jobtitle">
+            <option value="2">photograper</option>
+            <option value="3">developer</option>
+            <option value="4">marketer</option>
+        </select>
+        <input type="submit" value="select">
+    </form>
+</section>
