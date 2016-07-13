@@ -32,7 +32,7 @@ class LoginView(View):
                     settings.LOGIN_SUCCESS_MESSAGE,
             )
 
-            return redirect("jobs:careerlist")
+            return redirect("jobs:history")
 
         messages.add_message(
             request,
