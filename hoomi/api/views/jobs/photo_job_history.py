@@ -7,7 +7,6 @@ from jobs.models import PhotoJobHistory
 
 
 class PhotoJobHistoryListAPIView(ListAPIView):
-    permission_classes = (AllowAny, )
     serializer_class = PhotoJobHistorySerializer
 
     def get_queryset(self):
