@@ -25,7 +25,6 @@ class TestJobHistory(TestCase):
         photo_job_history = PhotoJobHistory.objects.create(
             user=self.user,
             theme=1,
-            content="test",
         )
 
         self.assertTrue(photo_job_history.hash_id)
