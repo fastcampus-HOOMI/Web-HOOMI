@@ -12,7 +12,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_KEY')
 
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_SECRET')
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/login"
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/main/"
 
 # solved conflict social_pipeline with pipeline
 SOCIAL_AUTH_PIPELINE = (
@@ -25,5 +25,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details'
+    'social.pipeline.user.user_details',
+
 )
