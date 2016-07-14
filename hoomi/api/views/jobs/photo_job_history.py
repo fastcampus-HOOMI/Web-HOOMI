@@ -3,11 +3,13 @@ from rest_framework.permissions import AllowAny
 
 from api.serializers.jobs import PhotoJobHistorySerializer
 
+from api.paginations import StandardPagination
 from jobs.models import PhotoJobHistory
 
 
 class PhotoJobHistoryListAPIView(ListAPIView):
     serializer_class = PhotoJobHistorySerializer
+    pagination_class = StandardPagination
 
     def get_queryset(self):
         photo_job_filter = PhotoJobHistory.objects.all()

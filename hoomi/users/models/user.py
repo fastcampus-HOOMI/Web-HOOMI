@@ -13,6 +13,9 @@ class HoomiUserManager(UserManager):
 
 
 class User(AbstractUser):
+
+    objects = HoomiUserManager()
+
     job = models.ForeignKey(
         Job,
         default=1,
