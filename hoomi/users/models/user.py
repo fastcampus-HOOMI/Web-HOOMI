@@ -23,3 +23,9 @@ class User(AbstractUser):
 
     def __str(self):
         return self.title
+
+    def social_get_or_none(self, user, **kwargs):
+        try:
+            return user.social_auth.get(**kwargs)
+        except:
+            return None
