@@ -6,6 +6,7 @@ from api.views.auth import *
 
 urlpatterns = [
     url(r'^signup/$', MobileSignupAPIView.as_view(), name="signup"),
+    url(r'^mypage/$', PhotoJobMyPageListAPIView.as_view(), name="mypage"),
     url(r'^oauth/(?P<provider>\w+)/$', MobileOAuthSignupLoginAPIView.as_view(), name="login"),
     url(r'^login/$', MobileLoginAPIView.as_view(), name="login"),
 ]
