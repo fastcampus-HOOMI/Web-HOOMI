@@ -120,40 +120,4 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATICFILES_DIR = [
-        os.path.join(BASE_DIR, "hoomi", "static"),
-]
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "media")
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
-)
-PIPELINE = {
-    'STYLESHEETS': {
-        'hoomi': {
-            'source_filenames': (
-              'css/application.css',
-            ),
-            'output_filename': 'css/hoomi.css',
-        }
-    },
-
-}
+TIME_ZONE = 'Asia/Seoul'
