@@ -4,7 +4,7 @@ from jobs.models import PhotoJobHistory
 from jobs.models import Experience
 
 
-class ExpereienceSerializer(serializers.HyperlinkedModelSerializer):
+class ExperienceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Experience
         fields = [
@@ -14,7 +14,7 @@ class ExpereienceSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PhotoJobHistorySerializer(serializers.HyperlinkedModelSerializer):
-    experiences = ExpereienceSerializer(source="experience_set", many=True)
+    experiences = ExperienceSerializer(source="experience_set", many=True)
 
     class Meta:
         model = PhotoJobHistory
