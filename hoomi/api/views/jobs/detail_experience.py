@@ -1,6 +1,7 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 from jobs.models import PhotoJobHistory
 from api.paginations.detail import DetailPagination
@@ -14,6 +15,6 @@ class ExperienceDetailListAPIView(ListAPIView):
 
     def get_queryset(self):
         hash_id = self.kwargs.get("hash_id")
-        photo = PhotoJobHistory.objects.get_or_none(hash_id=hash_id)
+        photo = get_object_or_404(PhotoJobHistory, hash_id=hash_id)
 
         return photo.experience_set.all()
