@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from api.serializers import UserSerializer
+from api.serializers.auth import UserSerializer
 
 from social.apps.django_app.default.models import UserSocialAuth
 

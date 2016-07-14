@@ -14,7 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
 
 from django.http.response import HttpResponse
@@ -25,16 +27,13 @@ def home(request):
 
 
 urlpatterns = [
-    url(r'^', include("users.urls", namespace='usrers')),
+    url(r'^', include("users.urls", namespace='users')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
-    url(r'^api/', include('api.urls', namespace="api")),
-    url(r'^api-docs/', include('rest_framework_swagger.urls')),
+    url(r'^', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^', include("users.urls", namespace='usrers')),
+    url(r'^', include("jobs.urls", namespace='jobs')),
 
-    url(r'^', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^', include("users.urls", namespace='usrers')),
     url(r'^api/', include('api.urls', namespace="api")),
     url(r'^api-docs/', include('rest_framework_swagger.urls')),
-    url(r'^', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^', include("users.urls", namespace='usrers')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
+
 from jobs.models import Job
 
 
@@ -12,15 +13,10 @@ class HoomiUserManager(UserManager):
 
 
 class User(AbstractUser):
-    objects = HoomiUserManager()
-
     job = models.ForeignKey(
         Job,
         default=1,
     )
 
-    def social_get_or_none(self, user, **kwargs):
-        try:
-            return user.social_auth.get(**kwargs)
-        except:
-            return None
+    def __str(self):
+        return self.title

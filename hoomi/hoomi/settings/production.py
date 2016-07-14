@@ -3,7 +3,7 @@ from .partials import *
 
 DEBUG = False
 ALLOWED_HOSTS = [
-        "*",
+    "*",
 ]
 
 STATICFILES_STORAGE = 'hoomi.storage.S3PipelineCachedStorage'
@@ -17,3 +17,4 @@ AWS_S3_CUSTOM_DOMAIN = 'dvfsoy3wz1geh.cloudfront.net'
 AWS_S3_URL_PROTOCOL = 'https'
 
 STATIC_URL = "https://dvfsoy3wz1geh.cloudfront.net/"
+MEDIA_URL = "https://dvfsoy3wz1geh.cloudfront.net/"
