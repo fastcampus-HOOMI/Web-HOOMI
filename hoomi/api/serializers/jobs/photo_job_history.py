@@ -15,10 +15,12 @@ class ExperienceSerializer(serializers.HyperlinkedModelSerializer):
 
 class PhotoJobHistorySerializer(serializers.HyperlinkedModelSerializer):
     experiences = ExperienceSerializer(source="experience_set", many=True)
+    username = serializers.CharField(source="user.username")
 
     class Meta:
         model = PhotoJobHistory
         fields = [
+            "username",
             "theme",
             "hash_id",
             "experiences",
