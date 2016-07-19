@@ -102,8 +102,8 @@ class TestCreatePhotoJob(TestCase):
         )
 
         self.assertEqual(
-            test_content,
-            response.status_code,
+            test_theme,
+            response.data.get("theme"),
         )
 
     def get_photo_job(self):
