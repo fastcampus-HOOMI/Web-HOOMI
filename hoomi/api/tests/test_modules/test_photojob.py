@@ -80,10 +80,12 @@ class TestCreatePhotoJob(TestCase):
             content_type="image/png"
         )
 
+        test_content = "test_job_create"
+
         data = {
             "theme": test_theme,
             "image": test_image,
-            "content": "1111",
+            "content": test_content,
         }
 
         response = self.client.post(
@@ -96,6 +98,11 @@ class TestCreatePhotoJob(TestCase):
 
         self.assertEquals(
             201,
+            response.status_code,
+        )
+
+        self.assertEqual(
+            test_content,
             response.status_code,
         )
 
@@ -112,10 +119,10 @@ class TestCreatePhotoJob(TestCase):
 
         hash_id = photo_job.hash_id
 
-        get_url = "/api/job-history/" + hash_id + "/"
+        set_uri = "/api/job-history/" + hash_id + "/"
 
         response = self.client.get(
-            get_url,
+            set_uri,
             data={},
             HTTP_AUTHORIZATION="JWT {token}".format(
                 token=self.token,
@@ -131,7 +138,7 @@ class TestCreatePhotoJob(TestCase):
         photo_job = self.get_photo_job()
         test_theme = 22
 
-        get_url = "/api/job-history/{hash_id}/".format(
+        set_uri = "/api/job-history/{hash_id}/".format(
             hash_id=photo_job.hash_id,
         )
 
@@ -141,7 +148,7 @@ class TestCreatePhotoJob(TestCase):
         }
 
         response = self.client.patch(
-            path=get_url,
+            path=set_uri,
             data=json.dumps(data),
             content_type="application/json",
             HTTP_AUTHORIZATION="JWT {token}".format(
@@ -168,12 +175,12 @@ class TestCreatePhotoJob(TestCase):
     def test_photo_job_delete_should_return_204(self):
         photo_job = self.get_photo_job()
 
-        get_url = "/api/job-history/{hash_id}/".format(
+        set_uri = "/api/job-history/{hash_id}/".format(
             hash_id=photo_job.hash_id,
         )
 
         response = self.client.delete(
-            path=get_url,
+            path=set_uri,
             HTTP_AUTHORIZATION="JWT {token}".format(
                 token=self.token,
             )
@@ -184,29 +191,61 @@ class TestCreatePhotoJob(TestCase):
             response.status_code,
         )
 
+    def test_experience_create_should_return_201(self):
+        photo_job = self.get_photo_job()
+
+        set_uri = "/api/job-history/{hash_id}/".format(
+            hash_id=photo_job.hash_id,
+        )
+
+        image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
+        test_content = "test_create"
+
+        test_image = SimpleUploadedFile(
+            name="test.png",
+            content=open(image, "rb").read(),
+            content_type="image/png"
+        )
+
+        data = {
+            "image": test_image,
+            "content": test_content,
+        }
+
+        response = self.client.post(
+            path=set_uri,
+            data=data,
+            HTTP_AUTHORIZATION="JWT {token}".format(
+                token=self.token,
+            )
+        )
+
+        self.assertEqual(
+            201,
+            response.status_code,
+        )
+
+        self.assertEqual(
+            test_content,
+            response.data.get("content"),
+        )
+
     def test_experience_patch_shoud_return_200(self):
         photo_job = self.get_photo_job()
 
-        get_url = "/api/job-history/{hash_id}/{id}/".format(
+        set_uri = "/api/job-history/{hash_id}/{id}/".format(
             hash_id=photo_job.hash_id,
             id=photo_job.experience_set.first().id,
         )
 
-        image = settings.PROJECT_ROOT_DIR + "/dist/media/test2.png"
-        test_content = "test_patch"
-
-        test_image = SimpleUploadedFile(
-            name="test2.png",
-            content=open(image, "rb").read(),
-            content_type="image/png"
-        )
+        test_content = "test_create"
 
         data = {
             "content": test_content,
         }
 
         response = self.client.patch(
-            path=get_url,
+            path=set_uri,
             data=json.dumps(data),
             content_type="application/json",
             HTTP_AUTHORIZATION="JWT {token}".format(
@@ -228,13 +267,13 @@ class TestCreatePhotoJob(TestCase):
         photo_job = self.get_photo_job()
 
         hash_id = photo_job.hash_id
-        get_url = "/api/job-history/{hash_id}/{id}/".format(
+        set_uri = "/api/job-history/{hash_id}/{id}/".format(
             hash_id=photo_job.hash_id,
             id=photo_job.experience_set.first().id,
         )
 
         response = self.client.delete(
-            path=get_url,
+            path=set_uri,
             HTTP_AUTHORIZATION="JWT {token}".format(
                 token=self.token,
             )
