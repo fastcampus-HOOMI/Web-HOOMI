@@ -44,10 +44,10 @@ class PhotoJobMyPageListAPIView(ListAPIView):
 
     def patch(self, request, *args, **kwargs):
         job_id = request.data.get('job')
-        job_title = get_object_or_404(Job, id=job_id)
+        job = get_object_or_404(Job, id=job_id)
 
         user = request.user
-        user.job.title = job_title.title
+        user.job = job
         user.save()
 
         response_data = {
