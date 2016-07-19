@@ -2,13 +2,15 @@ from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.shortcuts import get_object_or_404
+
 from api.serializers.jobs import PhotoJobHistorySerializer
 
 from api.paginations import StandardPagination
 from jobs.models import PhotoJobHistory
 
 
-class PhotoJobHistoryListAPIView(ListCreateAPIView):
+class PhotoJobHistoryListCreateAPIView(ListCreateAPIView):
     serializer_class = PhotoJobHistorySerializer
     pagination_class = StandardPagination
 
