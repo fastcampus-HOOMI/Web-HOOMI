@@ -29,11 +29,4 @@ class PhotoJobHistoryListCreateAPIView(ListCreateAPIView):
                 status.HTTP_400_BAD_REQUEST,
             )
 
-        self.create(request, *args, **kwargs)
-
-        response_data = {"Success": "Created data"}
-
-        return Response(
-            response_data,
-            status.HTTP_201_CREATED,
-        )
+        return self.create(request, *args, **kwargs)
