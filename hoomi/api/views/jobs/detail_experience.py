@@ -9,6 +9,7 @@ from api.serializers import ExperienceSerializer
 
 
 class ExperienceDetailListPatchDestroyAPIView(mixins.ListModelMixin,
+                                              mixins.CreateModelMixin,
                                               GenericAPIView):
 
     serializer_class = ExperienceSerializer
@@ -36,6 +37,16 @@ class ExperienceDetailListPatchDestroyAPIView(mixins.ListModelMixin,
         )
 
         return photo_job
+
+    def post(self, request, *args, **kwargs):
+        if not request.FILES:
+            response_data = {"Error": "image required"}
+            return Response(
+                response_data,
+                status.HTTP_400_BAD_REQUEST,
+            )
+
+        return self.create(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
         photo_job = self.get_photo_job()
