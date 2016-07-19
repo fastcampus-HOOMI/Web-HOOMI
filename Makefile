@@ -3,4 +3,4 @@ migrate:
 	- python hoomi/manage.py migrate
 
 test:
-	- python hoomi/manage.py test jobs -v2
+	- python hoomi/manage.py test jobs api -v2
