@@ -1,15 +1,16 @@
-<h1>Login</h1>
-<section>
-    <form action="{% url "users:login" %}" method="POST">
-        {% csrf_token %}
-        <input type="username" name="username" placeholder="email" required>
-        <input type="password" name="password" placeholder="password" required>
-        <input type="submit" value="login">
-    </form>
-</section>
-<section>
-    <ul>
+{% extends "base.html" %}
 
+{% block content %}
+<section>
+    <form class ="form-signin" action="{% url "users:login" %}" method="POST">
+        <h2 class="form-signin-heading">로그인</h2>
+        {% csrf_token %}
+        <input class="form-control" type="username" name="username" placeholder="email" required>
+        <input class="form-control" type="password" name="password" placeholder="password" required>
+
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="login">
+    
+    <ul>
         <li>
             <a href="{% url "users:signup" %}">signup</a>
         </li>
@@ -17,4 +18,6 @@
             <a href="{% url "social:begin" backend="facebook" %}">login with facebook</a>
         </li>
     </ul>
+    </form>
 </section>
+{% endblock %}
