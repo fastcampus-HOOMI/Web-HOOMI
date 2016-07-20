@@ -55,5 +55,11 @@ class Experience(models.Model):
         max_length=100,
     )
 
+    page = models.IntegerField()
+
     def __str__(self):
-        return self.photo_job.user_theme
+        return "{user_theme} - {hash_id} - {page}".format(
+            user_theme=self.photo_job.user_theme,
+            hash_id=self.photo_job.hash_id,
+            page=self.page,
+        )
