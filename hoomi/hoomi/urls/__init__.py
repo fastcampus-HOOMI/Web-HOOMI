@@ -18,12 +18,9 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.conf import settings
 from django.contrib import admin
-
 from django.http.response import HttpResponse
-
-
-def home(request):
-    return HttpResponse("Hello HOOMI")
+from django.shortcuts import render
+from jobs.views import *
 
 
 urlpatterns = [
@@ -31,7 +28,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^', include('social.apps.django_app.urls', namespace='social')),
+    
     url(r'^', include("users.urls", namespace='usrers')),
+    url(r'^$', History.as_view(), name="history"),
     url(r'^', include("jobs.urls", namespace='jobs')),
 
     url(r'^api/', include('api.urls', namespace="api")),
