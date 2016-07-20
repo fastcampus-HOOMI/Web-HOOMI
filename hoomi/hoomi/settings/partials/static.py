@@ -5,7 +5,7 @@ import os
 
 from .base import BASE_DIR, PROJECT_ROOT_DIR
 
-STATICFILES_DIR = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "hoomi", "static"),
 ]
 
@@ -27,9 +27,9 @@ PIPELINE = {
         'hoomi': {
             'source_filenames': (
               'css/application.css',
+              'css/hoomi.css',
             ),
             'output_filename': 'css/hoomi.css',
         }
     },
-
 }

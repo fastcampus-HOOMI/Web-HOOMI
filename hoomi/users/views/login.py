@@ -10,26 +10,26 @@ class LoginView(View):
 
     def get(self, request, *args, **kwargs):
         return render(
-                request,
-                "users/login.html",
-                context={},
+            request,
+            "users/login.html",
+            context={},
         )
 
     def post(self, request, *args, **kwargs):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(
-                username=username,
-                password=password,
+            username=username,
+            password=password,
         )
 
         if user:
             login(request, user)
 
             messages.add_message(
-                    request,
-                    messages.SUCCESS,
-                    settings.LOGIN_SUCCESS_MESSAGE,
+                request,
+                messages.ERROR,
+                settings.LOGIN_FAIL_MESSAGE,
             )
 
             return redirect("jobs:history")
