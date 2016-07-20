@@ -47,18 +47,13 @@ class TestCreatePhotoJob(TestCase):
 
         self.assertTrue(self.token)
 
-    def test_photo_job_create_not_image_should_return_400(self):
+    def test_photo_job_create_not_required_field_should_return_400(self):
         test_theme = 1
         image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
 
-        data = {
-            "theme": test_theme,
-            "content_1": "1111",
-        }
-
         response = self.client.post(
             "/api/job-history/",
-            data=data,
+            data={},
             format="multipart",
             HTTP_AUTHORIZATION="JWT {token}".format(
                 token=self.token,
@@ -69,6 +64,8 @@ class TestCreatePhotoJob(TestCase):
             400,
             response.status_code,
         )
+
+        self.assertTrue("theme" in response.data)
 
     def test_photo_job_create_should_return_201(self):
         test_theme = 1
@@ -84,8 +81,6 @@ class TestCreatePhotoJob(TestCase):
 
         data = {
             "theme": test_theme,
-            "image": test_image,
-            "content": test_content,
         }
 
         response = self.client.post(
@@ -191,6 +186,46 @@ class TestCreatePhotoJob(TestCase):
             response.status_code,
         )
 
+    def test_experience_create_not_image_should_return_400(self):
+        photo_job = self.get_photo_job()
+
+        set_uri = "/api/job-history/{hash_id}/".format(
+            hash_id=photo_job.hash_id,
+        )
+
+        image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
+        test_content = "test_create"
+        test_page = 1
+
+        test_image = SimpleUploadedFile(
+            name="test.png",
+            content=open(image, "rb").read(),
+            content_type="image/png"
+        )
+
+        data = {
+            "content": test_content,
+            "page": 1,
+        }
+
+        response = self.client.post(
+            path=set_uri,
+            data=data,
+            HTTP_AUTHORIZATION="JWT {token}".format(
+                token=self.token,
+            )
+        )
+
+        self.assertEqual(
+            400,
+            response.status_code,
+        )
+
+        self.assertEqual(
+            "image required",
+            response.data.get("Error"),
+        )
+
     def test_experience_create_should_return_201(self):
         photo_job = self.get_photo_job()
 
@@ -200,6 +235,7 @@ class TestCreatePhotoJob(TestCase):
 
         image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
         test_content = "test_create"
+        test_page = 1
 
         test_image = SimpleUploadedFile(
             name="test.png",
@@ -210,6 +246,7 @@ class TestCreatePhotoJob(TestCase):
         data = {
             "image": test_image,
             "content": test_content,
+            "page": 1,
         }
 
         response = self.client.post(
@@ -230,8 +267,86 @@ class TestCreatePhotoJob(TestCase):
             response.data.get("content"),
         )
 
+    def test_experience_create_not_required_field_should_return_400(self):
+        photo_job = self.get_photo_job()
+
+        set_uri = "/api/job-history/{hash_id}/".format(
+            hash_id=photo_job.hash_id,
+        )
+
+        image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
+        test_content = "test_create"
+        test_page = 1
+
+        test_image = SimpleUploadedFile(
+            name="test.png",
+            content=open(image, "rb").read(),
+            content_type="image/png"
+        )
+
+        data = {
+            "image": test_image,
+        }
+
+        response = self.client.post(
+            path=set_uri,
+            data=data,
+            HTTP_AUTHORIZATION="JWT {token}".format(
+                token=self.token,
+            )
+        )
+
+        self.assertEqual(
+            400,
+            response.status_code,
+        )
+
+        self.assertTrue(
+            ["page", "content"],
+            [key for key in response.data.keys()]
+        )
+
+    def test_experience_create_duplicate_page_should_return_400(self):
+        self.test_experience_create_should_return_201()
+
+        photo_job = self.get_photo_job()
+
+        set_uri = "/api/job-history/{hash_id}/".format(
+            hash_id=photo_job.hash_id,
+        )
+
+        image = settings.PROJECT_ROOT_DIR + "/dist/media/test.png"
+        test_content = "test_create"
+        test_page = 1
+
+        test_image = SimpleUploadedFile(
+            name="test.png",
+            content=open(image, "rb").read(),
+            content_type="image/png"
+        )
+
+        data = {
+            "image": test_image,
+            "content": test_content,
+            "page": 1,
+        }
+
+        response = self.client.post(
+            path=set_uri,
+            data=data,
+            HTTP_AUTHORIZATION="JWT {token}".format(
+                token=self.token,
+            )
+        )
+
+        self.assertEqual(
+            400,
+            response.status_code,
+        )
+
     def test_experience_patch_shoud_return_200(self):
         photo_job = self.get_photo_job()
+        self.test_experience_create_should_return_201()
 
         set_uri = "/api/job-history/{hash_id}/{id}/".format(
             hash_id=photo_job.hash_id,
@@ -265,6 +380,7 @@ class TestCreatePhotoJob(TestCase):
 
     def test_experience_delete_should_return_204(self):
         photo_job = self.get_photo_job()
+        self.test_experience_create_should_return_201()
 
         hash_id = photo_job.hash_id
         set_uri = "/api/job-history/{hash_id}/{id}/".format(

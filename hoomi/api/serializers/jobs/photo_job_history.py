@@ -13,6 +13,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
             "id",
             "image",
             "content",
+            "page",
         ]
 
     def create(self, validated_data):
@@ -71,18 +72,10 @@ class PhotoJobHistorySerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         user = request.user
         data = request.data
-        image = request.FILES
 
         photo_job = PhotoJobHistory.objects.create(
             user=user,
             theme=data.get("theme"),
-        )
-
-        experience = Experience.objects.create(
-            user=user,
-            photo_job=photo_job,
-            image=image.get("image"),
-            content=data.get("content"),
         )
 
         return photo_job
