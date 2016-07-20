@@ -2,6 +2,8 @@ import os
 
 AUTH_USER_MODEL = "users.User"
 
+LOGIN_URL = '/login/'
+
 AUTHENTICATION_BACKENDS = [
         'social.backends.facebook.FacebookOAuth2',
 

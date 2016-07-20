@@ -21,11 +21,11 @@ class SignupView(View):
 
         # TODO : need to check data revevancy
         user = get_user_model().objects.create_user(
-                username=username,
-                password=password,
-                email=username,
-                first_name=firstname,
-                last_name=lastname,
+            username=username,
+            password=password,
+            email=username,
+            first_name=firstname,
+            last_name=lastname,
         )
 
         return redirect(reverse("users:login"))

@@ -32,7 +32,7 @@ class LoginView(View):
                 settings.LOGIN_FAIL_MESSAGE,
             )
 
-            return redirect("jobs:history")
+            return redirect("jobs:main")
 
         messages.add_message(
             request,
