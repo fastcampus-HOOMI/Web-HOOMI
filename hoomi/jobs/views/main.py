@@ -7,10 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class MainView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-
-        # if request.user.job.id == 1:
-        #     return redirect("jobs:select")
-
         return render(
             request,
             "jobs/main.html",

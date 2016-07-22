@@ -29,24 +29,9 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container {
-    padding: 60px 15px 0;
-}
-.container .text-muted {
-    margin: 20px 0;
-}
-
 .footer > .container {
     padding-right: 15px;
     padding-left: 15px;
-}
-
-code {
-    font-size: 80%;
-}
-
-.navbar-static-top {
-    margin-bottom: 19px;
 }
 
 .form-signin {
@@ -94,3 +79,23 @@ code {
 }
 
 
+/* Auth CSS */
+.login-background {
+  background-color: #fafafa;
+}
+.login-header {
+  text-align: center;
+}
+.login-distinguish {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 10px 40px 18px;
+  text-align: center;
+}
+.btn-signup {
+  margin-top: 30px;
+  text-align: center;
+}

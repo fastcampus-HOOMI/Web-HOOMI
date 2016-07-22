@@ -27,9 +27,20 @@ PIPELINE = {
         'hoomi': {
             'source_filenames': (
               'css/application.css',
+              'css/font-awesome.css',
+              'css/bootstrap-social.css',
               'css/hoomi.css',
+              'fonts/*',
             ),
             'output_filename': 'css/hoomi.css',
+        }
+    },
+    'JAVASCRIPT': {
+        'hoomi': {
+            'source_filenames': (
+                'js/jquery.bootstrap-growl.min.js',
+            ),
+            'out_filename': 'js/hoomi.js',
         }
     },
 }

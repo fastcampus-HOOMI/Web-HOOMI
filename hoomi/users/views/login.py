@@ -1,3 +1,4 @@
+from django.contrib.sessions.backends import signed_cookies
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.views.generic import View
@@ -9,6 +10,9 @@ from django.conf import settings
 class LoginView(View):
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return redirect("jobs:main")
+
         return render(
             request,
             "users/login.html",
@@ -28,8 +32,8 @@ class LoginView(View):
 
             messages.add_message(
                 request,
-                messages.ERROR,
-                settings.LOGIN_FAIL_MESSAGE,
+                messages.SUCCESS,
+                settings.LOGIN_SUCCESS_MESSAGE,
             )
 
             return redirect("jobs:main")
@@ -40,4 +44,4 @@ class LoginView(View):
             settings.LOGIN_FAIL_MESSAGE,
         )
 
-        return redirect(reverse("users:login"))
+        return redirect("users:login")

@@ -1,4 +1,6 @@
 import os
+from django.contrib.messages import constants as message_constants
+
 
 AUTH_USER_MODEL = "users.User"
 
@@ -20,6 +22,7 @@ SIGNUP_SUCCESS_MESSAGE = "성공적으로 회원가입 되었습니다"
 LOGIN_SUCCESS_MESSAGE = "성공적으로 로그인 되었습니다"
 LOGOUT_SUCCESS_MESSAGE = "성공적으로 로그아웃 되었습니다"
 LOGIN_FAIL_MESSAGE = "로그인이 실패 되었습니다"
+SIGNUP_DUPLICATE_MESSAGE = "이미 회원가입이 되어있는 email입니다."
 
 # solved conflict social_pipeline with pipeline
 SOCIAL_AUTH_PIPELINE = (
@@ -35,3 +38,11 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
 
 )
+
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'debug',
+    message_constants.INFO: 'info',
+    message_constants.SUCCESS: 'success',
+    message_constants.WARNING: 'warning',
+    message_constants.ERROR: 'danger',
+}
