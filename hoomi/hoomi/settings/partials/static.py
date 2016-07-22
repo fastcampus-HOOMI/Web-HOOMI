@@ -10,7 +10,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "media")
+STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "images")
@@ -27,9 +27,20 @@ PIPELINE = {
         'hoomi': {
             'source_filenames': (
               'css/application.css',
+              'css/font-awesome.css',
+              'css/bootstrap-social.css',
               'css/hoomi.css',
+              'fonts/*',
             ),
             'output_filename': 'css/hoomi.css',
+        }
+    },
+    'JAVASCRIPT': {
+        'hoomi': {
+            'source_filenames': (
+                'js/jquery.bootstrap-growl.min.js',
+            ),
+            'out_filename': 'js/hoomi.js',
         }
     },
 }

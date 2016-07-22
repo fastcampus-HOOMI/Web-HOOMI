@@ -4,17 +4,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class History(LoginRequiredMixin, View):
-
-    login_url = '/login/'
+class MainView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-
-        if request.user.job.id == 1:
-            return redirect("jobs:select")
-
         return render(
-                request,
-                "jobs/history.html",
-                context={}
+            request,
+            "jobs/main.html",
+            context={}
         )

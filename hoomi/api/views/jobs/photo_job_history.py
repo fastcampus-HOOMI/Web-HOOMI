@@ -22,11 +22,4 @@ class PhotoJobHistoryListCreateAPIView(ListCreateAPIView):
         return photo_job_filter[:per]
 
     def post(self, request, *args, **kwargs):
-        if not request.FILES:
-            response_data = {"Error": "At least one image required"}
-            return Response(
-                response_data,
-                status.HTTP_400_BAD_REQUEST,
-            )
-
         return self.create(request, *args, **kwargs)

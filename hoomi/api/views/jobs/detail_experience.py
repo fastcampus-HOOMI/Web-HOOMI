@@ -23,7 +23,7 @@ class ExperienceDetailListPatchDestroyAPIView(mixins.ListModelMixin,
             hash_id=hash_id,
         )
 
-        return photo_job.experience_set.all()
+        return photo_job.experience_set.all().order_by("page")
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -39,8 +39,13 @@ class ExperienceDetailListPatchDestroyAPIView(mixins.ListModelMixin,
         return photo_job
 
     def post(self, request, *args, **kwargs):
-        if not request.FILES:
-            response_data = {"Error": "image required"}
+        page = request.data.get("page")
+        duplicate_page = self.get_photo_job().experience_set.filter(page=page)
+
+        if not request.FILES or duplicate_page:
+            msg = "duplicate page" if duplicate_page else "image required"
+
+            response_data = {"Error": msg}
             return Response(
                 response_data,
                 status.HTTP_400_BAD_REQUEST,
