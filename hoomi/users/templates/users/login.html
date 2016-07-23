@@ -2,22 +2,61 @@
 
 {% block content %}
 <section>
-    <form class ="form-signin" action="{% url "users:login" %}" method="POST">
-        <h2 class="form-signin-heading">로그인</h2>
-        {% csrf_token %}
-        <input class="form-control" type="username" name="username" placeholder="email" required>
-        <input class="form-control" type="password" name="password" placeholder="password" required>
+    <div class="container">
+        <form class ="form-signin" action="{% url "users:login" %}" method="POST" data-toggle="validator" role="form">
+            <h1 class="login-header">Hoomi</h1>
+            {% csrf_token %}
+            <a class="btn btn-block btn-social btn-lg btn-facebook" href="{% url "social:begin" backend="facebook" %}">
+                <span class="fa fa-facebook"></span> 페이스북 로그인 
+            </a>        
+            <div class="login-distinguish">
+                <span>또는</span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="username" placeholder="email" data-error="email 형식이 맞지 않습니다." required>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"> 
+                <input class="form-control" type="password" name="password" placeholder="password" data-minlength="6" required>
+                <div class="help-block">Minimum of 6 characters</div>
+            </div>
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="로그인">
 
-        <input class="btn btn-primary btn-lg btn-block" type="submit" value="login">
-    
-    <ul>
-        <li>
-            <a href="{% url "users:signup" %}">signup</a>
-        </li>
-        <li>
-            <a href="{% url "social:begin" backend="facebook" %}">login with facebook</a>
-        </li>
-    </ul>
-    </form>
+        </form> 
+        <span class="btn-signup col-md-12 col-sm12">
+            계정이 없으신가요?
+            <a data-toggle="modal" data-target="#signUp">회원가입</a>
+        </span>    
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="signUp" tabindex="1" role="dialog" aria-labelledby="signUpLable">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title" id="signUpLable">회원가입</h4>
+                </div>
+                <div class="modal-body">
+                    <form class ="form-signin" action="{% url "users:signup" %}" method="POST" data-toggle="validator" role="form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="username" placeholder="email" data-error="email 형식이 맞지 않습니다." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <input class="form-control form-group" type="text" name="firstname" placeholder="이름" required>
+                        <input class="form-control form-group" type="text" name="lastname" placeholder="성" required>
+                        <div class="form-group"> 
+                            <input class="form-control" type="password" name="password" placeholder="password" data-minlength="6" required>
+                            <div class="help-block">Minimum of 6 characters</div>
+                        </div>
+                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="회원가입">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}

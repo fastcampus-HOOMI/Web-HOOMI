@@ -12,3 +12,4 @@ djangorestframework-jwt
 python-social-auth
 hashids
 Pillow
+raven

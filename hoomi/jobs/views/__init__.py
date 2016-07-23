@@ -1,2 +1,2 @@
-from .select import Select
-from .history import History
+from .main import MainView
+from .select import SelectView

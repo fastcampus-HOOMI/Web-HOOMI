@@ -20,17 +20,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from jobs.views import *
 
 
 urlpatterns = [
-    url(r'^', include("users.urls", namespace='users')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('social.apps.django_app.urls', namespace='social')),
-
-    url(r'^', include("users.urls", namespace='usrers')),
-    url(r'^$', History.as_view(), name="history"),
     url(r'^', include("jobs.urls", namespace='jobs')),
+    url(r'^', include("users.urls", namespace='users')),
+
+    url(r'^admin/', admin.site.urls),
+
+    url(r'^', include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^api/', include('api.urls', namespace="api")),
     url(r'^api-docs/', include('rest_framework_swagger.urls')),
