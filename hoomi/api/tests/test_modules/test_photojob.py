@@ -6,7 +6,7 @@ from django.test import TestCase
 from django.conf import settings
 
 
-class TestCreatePhotoJob(TestCase):
+class TestPhotoJob(TestCase):
 
     def setUp(self):
         self.test_user = "test@test.com"

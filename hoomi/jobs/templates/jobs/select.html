@@ -1,18 +1,44 @@
 {% extends "base.html" %}
+{% load pipeline %}
 
 {% block content %}
-<h1>job select</h1>
-<section>
-    <form action="{% url "jobs:select" %}" method="POST">
-        {% csrf_token %}
-        <select name="jobtitle">
-            <option value="2">Photographer</option>
-            <option value="3">Programmer</option>
-            <option value="4">Editor</option>
-            <option value="5">Writer</option>
-        </select>
-        <input type="submit" value="select">
-    </form>
-</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-18">
+            <h2>Select Skill</h2>
+            <blockquote>
+                <p>기술을 선택하세요. 향후 추천서비스에 사용됩니다.</p>
+            </blockquote>
+        </div>
+        <div class="col-md-6 col-sm-6" id="skill-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="title">Programming Languages</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <input type="search" class="form-control skill-search" placeholder="Search Skill">
+                    </div>
+               </div>
 
+                <ul class="skill-list list-group"></ul>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="title">Select Languages</span> 
+                </div>
+                <ul class="list-group tag-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-18">
+        <button class="btn btn-primary pull-right" id="skill-save">Save</button>
+    </div>
+</div>
+{% endblock %}
+{% block custom_javascript %}
+    {% javascript "skill-select" %}
 {% endblock %}
