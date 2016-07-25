@@ -24,23 +24,42 @@ STATICFILES_FINDERS = (
 )
 PIPELINE = {
     'STYLESHEETS': {
-        'hoomi': {
+        'vendor': {
             'source_filenames': (
-              'css/application.css',
               'css/font-awesome.css',
               'css/bootstrap-social.css',
-              'css/hoomi.css',
               'fonts/*',
+            ),
+            'output_filename': 'css/vendor.css',
+        },
+        'hoomi': {
+            'source_filenames': (
+                'css/application.css',
+                'css/hoomi.css',
             ),
             'output_filename': 'css/hoomi.css',
         }
     },
     'JAVASCRIPT': {
-        'hoomi': {
+        'vendor': {
             'source_filenames': (
                 'js/jquery.bootstrap-growl.min.js',
+                'js/jquery.cookie.js',
+                'js/list.pagination.min.js',
             ),
-            'out_filename': 'js/hoomi.js',
+            'out_filename': 'js/vendor.js',
+        },
+        'hoomi': {
+            'source_filenames': (
+                'js/application.js',
+            ),
+            'output_filename': 'js/hoomi.js',
+        },
+        'skill-select': {
+            'source_filenames': (
+                'js/jobs/select.js',
+            ),
+            'output_filename': 'js/jobs/select.js',
         }
     },
 }

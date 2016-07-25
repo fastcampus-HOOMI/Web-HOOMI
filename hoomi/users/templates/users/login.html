@@ -3,30 +3,34 @@
 {% block content %}
 <section>
     <div class="container">
-        <form class ="form-signin" action="{% url "users:login" %}" method="POST" data-toggle="validator" role="form">
-            <h1 class="login-header">Hoomi</h1>
-            {% csrf_token %}
-            <a class="btn btn-block btn-social btn-lg btn-facebook" href="{% url "social:begin" backend="facebook" %}">
-                <span class="fa fa-facebook"></span> 페이스북 로그인 
-            </a>        
-            <div class="login-distinguish">
-                <span>또는</span>
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="email" name="username" placeholder="email" data-error="email 형식이 맞지 않습니다." required>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"> 
-                <input class="form-control" type="password" name="password" placeholder="password" data-minlength="6" required>
-                <div class="help-block">Minimum of 6 characters</div>
-            </div>
-            <input class="btn btn-primary btn-lg btn-block" type="submit" value="로그인">
+        <div class="row margin-top-30">
+            <div class="col-md-4 col-sm-6 col-md-push-4">
+                <form class ="form-signin" action="{% url "users:login" %}" method="POST" data-toggle="validator" role="form">
+                    <h1 class="login-header">Hoomi</h1>
+                    {% csrf_token %}
+                    <a class="btn btn-block btn-social btn-lg btn-facebook" href="{% url "social:begin" backend="facebook" %}">
+                        <span class="fa fa-facebook"></span>페이스북 로그인 
+                    </a>        
+                    <div class="login-distinguish">
+                        <span>또는</span>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="username" placeholder="email" data-error="email 형식이 맞지 않습니다." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group"> 
+                        <input class="form-control" type="password" name="password" placeholder="password" data-minlength="6" required>
+                        <div class="help-block">Minimum of 6 characters</div>
+                    </div>
+                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="로그인">
 
-        </form> 
-        <span class="btn-signup col-md-12 col-sm12">
-            계정이 없으신가요?
-            <a data-toggle="modal" data-target="#signUp">회원가입</a>
-        </span>    
+                </form> 
+                <span class="btn-signup col-md-12 col-sm12">
+                    계정이 없으신가요?
+                    <a data-toggle="modal" data-target="#signUp">회원가입</a>
+                </span>
+            </div>
+        </div>
     </div>
 
     <!-- Modal -->
