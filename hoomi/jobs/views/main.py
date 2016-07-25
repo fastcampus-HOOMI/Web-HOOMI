@@ -16,8 +16,14 @@ class MainView(LoginRequiredMixin, View):
                 context={},
             )
 
+        context = {
+            "name": "HeoJinHan",
+            "birth": "1989.10.29",
+            "email": "hjh5488@gmail.com",
+        }
+
         return render(
             request,
-            "jobs/main.html",
-            context={},
+            "jobs/main2.html",
+            context=context,
         )

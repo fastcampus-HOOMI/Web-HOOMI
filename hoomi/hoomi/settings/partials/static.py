@@ -27,8 +27,10 @@ PIPELINE = {
     'STYLESHEETS': {
         'vendor': {
             'source_filenames': (
-              'css/font-awesome.css',
-              'css/bootstrap-social.css',
+                'css/bootstrap.min.css',
+                'css/font-awesome.min.css',
+                'css/bootstrap-social.css',
+                'css/portfolio.jquery.css',
             ),
             'output_filename': 'css/vendor.css',
         },
@@ -38,6 +40,12 @@ PIPELINE = {
                 'css/hoomi.css',
             ),
             'output_filename': 'css/hoomi.css',
+        },
+        'resume': {
+            'source_filenames': (
+                'css/style.css',
+            ),
+            'output_filename': 'css/resume.css'
         }
     },
     'JAVASCRIPT': {
@@ -60,6 +68,16 @@ PIPELINE = {
                 'js/jobs/select.js',
             ),
             'output_filename': 'js/jobs/select.js',
+        },
+        'resume': {
+            'source_filenames': (
+                'js/marinka.js'
+                'js/portfolio.jquery.js',
+                'js/jquery.easing.min.js',
+                'js/scrolling-nav.js',
+                'js/jquery.scrollUp.js',
+            ),
+            'output_filename': 'js/resume.js',
         }
     },
 }
