@@ -2,6 +2,9 @@
 {% load pipeline %}
 {% load staticfiles %}
 
+{% block custom_stylesheet %}
+    {% stylesheet "resume" %}
+{% endblock %}
 {% block content %}
 <!-- start:main -->
 <div class="container" id="main" style="padding-top: 50px;">
@@ -454,3 +457,4 @@
     </div>
 </div>
 {% endblock %}
+{% javascript "resume" %}

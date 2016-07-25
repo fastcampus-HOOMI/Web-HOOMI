@@ -54,6 +54,7 @@ PIPELINE = {
                 'js/jquery.bootstrap-growl.min.js',
                 'js/jquery.cookie.js',
                 'js/list.pagination.min.js',
+                'js/bootstrap.min.js',
             ),
             'output_filename': 'js/vendor.js',
         },
