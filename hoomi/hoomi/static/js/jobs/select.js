@@ -23,11 +23,16 @@
             type: "GET",
             url: "/api/skills/",
             success: function(data) {
-                
                 skillList.add(data);
             },
             error: function(data) {
-                console.log(data);
+                $.bootstrapGrowl("현재 서버와의 통신에 문제가 있습니다", {
+                  type: 'danger',
+                  align: 'right',
+                  delay: 1000,
+                  allow_dismiss: true,
+                  stackup_spacing: 10
+                });
             }
         });
  
