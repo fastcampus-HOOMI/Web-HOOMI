@@ -5,17 +5,25 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class SelectView(LoginRequiredMixin, View):
-
     def get(self, request, *args, **kwargs):
-        return render(
+        user = request.user
+
+        if user.job_id != 1:
+            return render(
                 request,
-                "jobs/select.html",
+                "jobs/main.html",
                 context={}
-        )
+            )
+        return redirect("jobs:select")
 
     def post(self, request, *args, **kwargs):
+        user = request.user
 
-        value = request.POST.get("jobtitle")
-        request.user.job_id = int(value)
-        request.user.save()
+        user.job_id = 2
+        user.developer_set.create(
+            skills=request.POST.getlist("list[]"),
+            interest_company=[],
+            theme=1,
+        )
+        user.save()
         return redirect("jobs:main")
