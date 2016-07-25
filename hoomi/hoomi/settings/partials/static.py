@@ -22,13 +22,13 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'pipeline.finders.PipelineFinder',
 )
+
 PIPELINE = {
     'STYLESHEETS': {
         'vendor': {
             'source_filenames': (
               'css/font-awesome.css',
               'css/bootstrap-social.css',
-              'fonts/*',
             ),
             'output_filename': 'css/vendor.css',
         },
@@ -47,7 +47,7 @@ PIPELINE = {
                 'js/jquery.cookie.js',
                 'js/list.pagination.min.js',
             ),
-            'out_filename': 'js/vendor.js',
+            'output_filename': 'js/vendor.js',
         },
         'hoomi': {
             'source_filenames': (
