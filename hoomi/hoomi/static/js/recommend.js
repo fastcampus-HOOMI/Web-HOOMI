@@ -69,14 +69,12 @@
             .style("text-anchor", "end")
             .text("count");
 
-        console.log("1111");
         function type(d) {
           // + coerces to a Number from a String (or anything)
           d.count = +d.count;
           return d;
         }
 
-        console.log("22222");
         d3.json("/api/skills/company/", function(error, data) {
           replay(data);
         });
