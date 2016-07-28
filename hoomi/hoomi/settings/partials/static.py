@@ -61,15 +61,20 @@ PIPELINE = {
     'JAVASCRIPT': {
         'vendor': {
             'source_filenames': (
+                # bootrstrap js
+                'js/bootstrap.min.js',
+
+                # jquery js
                 'js/jquery-ui.min.js',
                 'js/jquery.bootstrap-growl.min.js',
                 'js/jquery.cookie.js',
-                'js/list.pagination.min.js',
-                'js/bootstrap.min.js',
+                'js/jquery.form.js',
                 'js/jquery.validate.min.js',
                 'js/additional-methods.min.js',
                 'js/messages_ko.min.js',
-                'js/jquery.form.js',
+
+                # list.js
+                'js/list.pagination.min.js',
             ),
             'output_filename': 'js/vendor.js',
         },
