@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <!-- start:main -->
-<form action="{% url "jobs:resume" %}" method="POST" id="resume-form" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form action="{% url "jobs:resume" %}" method="POST" id="mypage" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="container" id="main" style="padding-top: 50px;">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
@@ -16,21 +16,18 @@
                         <div class="text-center">
                             {# <a href="#"><i class="fa fa-facebook fa-2x" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a> #}
                             <a href="#"><i class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top" title="Github"></i></a>
-                            <input type="text" class="form-control" name="github_profile" placeholder="Github주소를 써주세요." required>
+                            <input type="text" class="form-control" name="github_profile" value="{{ user.github_profile }}" required>
                         </div>
                     </div>
                     <div class="user">
                         <div class="text-center">
-                            <input type="file" accept="image/*" id="imageFile" name="user_image">
-                            <img id="profile-image" class="img-circle" src="{% static "resume_img/user.png"%}" width="236" height="306" required>
+                            <img id="profile-image" class="img-circle" src="{{ user.user_image.url}}" width="236" height="306" required>
                         </div>
                         <div class="user-head">
-                            <h1>
-                                <input type="text" name="name" class="form-control text-center" value="{{ name }}">
-                            </h1>
+                            <h1>{{ user.name }}</h1>
                             <div class="hr-center"></div>
                             <h5>
-                                <input type-"text" name="detail_job" class="form-control text-center" placeholder="WebDeveloper" required>
+                                {{ user.detail_job}}
                             </h5>
                         </div>
                     </div>
@@ -82,14 +79,14 @@
                                 <div class="timeline-badge primary"></div>
                                 <div class="timeline-panel">
                                     <h1>
-                                        <input type="text" name="timeline_name" class="form-control col-md-6" placeholder="Hello I am {{ name }}" required>
+                                        {{ user.timeline_name}}
                                     </h1>
                                     <h4>
-                                        <input type="text" name="timeline_job" class="form-control" placeholder="Web Designer and Web developer" required>
+                                        {{ user.timeline_job}}
                                     </h4>
                                     <div class="hr-left"></div>
                                     <p>
-                                        <textarea class="form_control" name="timeline_description" rows="4" cols="95" placeholder="본인을 소개하는 글을 적어주세요."></textarea requried>
+                                        {{ user.timeline_description}}
                                     </p>
                                 </div>
                             </li>
@@ -101,42 +98,27 @@
 
                                     <div class="btn-group col-md-6">
                                         <button type="button" disabled class="btn btn-primary">이름</button>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="profile_name" placeholder="{{ name }}" value="{{ name }}" required>
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">{{ user.profile_name }}</button>
                                     </div>
                                     <div class="btn-group col-md-6">
                                         <button type="button" disabled class="btn btn-primary">생일</button>
-                                        <div class="col-md-8">
-                                            <input type="text" id="datepicker" class="form-control" name="profile_birth" placeholder="1900-01-01" required>
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">{{ user.profile_birth }}</button>
                                     </div>
                                     <div class="btn-group col-md-6">
                                         <button type="button" disabled class="btn btn-primary">email</button>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="profile_email" placeholder="{{ email }}" value="{{ email }}" data-error="Email 형식이 맞지 않습니다.">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">{{ user.profile_email }}</button>
                                     </div>
                                     <div class="btn-group">
                                         <button type="button" disabled class="btn btn-primary">주소</button>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="profile_address" placeholder="주소">
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">{{ user.profile_address }}</button>
                                     </div>
                                     <div class="btn-group">
                                         <button type="button" disabled class="btn btn-primary">Phone</button>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="profile_phone" placeholder="010-1234-5678" required>
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">asdasdasdasdasdasdasdas</button>
                                     </div>
                                     <div class="btn-group">
                                         <button type="button" disabled class="btn btn-primary">Blog</button>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="profile_blog" placeholder="http://blog.url">
-                                        </div>    
+                                        <button type="button" disabled class="btn btn-default">{{ user.profile_blog }}</button>
                                     </div>
                                 </div>
                             </li>
@@ -152,17 +134,11 @@
                                     <h1>경력사항</h1>
                                     <div class="hr-left"></div>
                                     <div class="work-experience">
-                                        <div class="thumbnail overlay">
-                                            <h3>Example</h3>
-                                            <small><i class="fa fa-calendar"></i> 2010 - 2014</small>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                            <div class="caption caption-up">
-                                                <h3>경력</h3>
-                                                <a class="btn btn-primary" id="add-experience" role="button">Add</a>
-                                            </div>
-                                        </div>
+                                        <h3>Web designer</h3>
+                                        <small><i class="fa fa-calendar"></i> 2010 - 2014</small>
+                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     </div>
                                 </div>
                             </li>
@@ -172,17 +148,11 @@
                                     <h1>학력</h1>
                                     <div class="hr-left"></div>
                                     <div class="work-experience">
-                                        <div class="thumbnail overlay">
-                                            <h3>Example</h3>
-                                            <small><i class="fa fa-calendar"></i> 2010 - 2014</small>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                            <div class="caption caption-up">
-                                                <h3>학력</h3>
-                                                <a class="btn btn-primary" id="add-education" role="button">Add</a>
-                                            </div>
-                                        </div>
+                                        <h3>Web designer</h3>
+                                        <small><i class="fa fa-calendar"></i> 2010 - 2014</small>
+                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     </div>
                                 </div>
                             </li>
@@ -203,7 +173,7 @@
                         </ul>
                     </div>
                     <!-- end:main content -->
-                    <input type="submit" class="pull-right btn btn-primary" value="Save">
+                    {# <input type="submit" class="pull-right btn btn-primary" value="Save"> #}
                 </div>
             </div>
         </div>

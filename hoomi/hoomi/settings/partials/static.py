@@ -27,12 +27,22 @@ PIPELINE = {
     'STYLESHEETS': {
         'vendor': {
             'source_filenames': (
+                # bootstarp
                 'css/bootstrap.min.css',
-                'css/font-awesome.min.css',
                 'css/bootstrap-social.css',
                 'css/portfolio.jquery.css',
+                'css/overlay-bootstrap.min.css',
+
             ),
             'output_filename': 'css/vendor.css',
+        },
+        'vendor-font-images': {
+            'source_filenames': (
+                # font-awesome
+                'css/font-awesome.min.css',
+            ),
+            'output_filename': 'css/vendor-font.css',
+            'variant': 'datauri',
         },
         'hoomi': {
             'source_filenames': (
@@ -51,10 +61,15 @@ PIPELINE = {
     'JAVASCRIPT': {
         'vendor': {
             'source_filenames': (
+                'js/jquery-ui.min.js',
                 'js/jquery.bootstrap-growl.min.js',
                 'js/jquery.cookie.js',
                 'js/list.pagination.min.js',
                 'js/bootstrap.min.js',
+                'js/jquery.validate.min.js',
+                'js/additional-methods.min.js',
+                'js/messages_ko.min.js',
+                'js/jquery.form.js',
             ),
             'output_filename': 'js/vendor.js',
         },
@@ -72,11 +87,7 @@ PIPELINE = {
         },
         'resume': {
             'source_filenames': (
-                'js/marinka.js'
-                'js/portfolio.jquery.js',
-                'js/jquery.easing.min.js',
-                'js/scrolling-nav.js',
-                'js/jquery.scrollUp.js',
+                'js/jobs/resume.js',
             ),
             'output_filename': 'js/resume.js',
         }
