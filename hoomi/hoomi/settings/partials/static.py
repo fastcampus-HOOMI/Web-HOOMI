@@ -106,19 +106,11 @@ PIPELINE = {
         },
     },
     'JAVASCRIPT': {
-        'vender': {
-            'source_filenames': (
-              'js/d3.js',
-            ),
-            'output_filename': 'css/d3.js',
-        },
         'drawChart': {
             'source_filenames': (
-                'js/recommend/appendCompany.js',
-                'js/recommend/barChart.js',
-                'js/recommend/bubbleChart.js',
+                'js/recommend.js',
                 ),
-            'output_filename': 'css/drawChart.js',
-            },
+            'output_filename': 'js/drawChart.js',
+        },
     }
 }
