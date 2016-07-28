@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^select/$', SelectView.as_view(), name="select"),
     url(r'^resume/$', ResumeCreateView.as_view(), name="resume"),
     url(r'^mypage/$', ResumeMypageView.as_view(), name="myresume"),
-    url(r'^recommend/$', Select.as_view(), name="recommend"),
+    url(r'^recommend/$', RecommendView.as_view(), name="recommend"),
 ]
