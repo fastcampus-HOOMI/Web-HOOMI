@@ -22,7 +22,7 @@ class RecommendAPIView(ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
 
-        user_skill = ["Pyton", "Java"]
+        user_skill = ["Pyton", "Java", "IOS", "JavaScript", "Pandas", "Android"]
         topSix = []
 
         for query in queryset:
@@ -38,4 +38,4 @@ class RecommendAPIView(ListAPIView):
                     "homepage": homepage,
                 })
         newlist = sorted(topSix, key=lambda x: x['count'])
-        return Response(newlist[:6])
+        return Response(newlist[-6:])
