@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load pipeline %}
+{% block custom_stylesheet%}
+  {% stylesheet "recommend" %}
+{% endblock %}
+{% block content %}
+
+<div class="row" id="firstrow">
+
+  <div class="col-lg-6">    
+    <h1>인기 있는 언어</h1>
+    <div class="barChart"></div>   
+  </div>
+  <div class="col-lg-6">
+    <h1>내가 선택한 언어</h1>
+	<div class="bubbleChart"></div> 
+  </div>
+</div>
+<div class="row" id="secondrow">
+</div>
+
+{% endblock %}
+{% block custom_javascript %}
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+    {% javascript "drawChart" %}
+{% endblock %}

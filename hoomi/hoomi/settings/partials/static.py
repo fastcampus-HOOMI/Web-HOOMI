@@ -56,7 +56,15 @@ PIPELINE = {
                 'css/style.css',
             ),
             'output_filename': 'css/resume.css'
-        }
+        },
+        'recommend': {
+            'source_filenames': (
+              'css/barchart.css',
+              'css/bubblechart.css',
+              'css/hoovereffect.css',
+            ),
+            'output_filename': 'css/recommend.css',
+        },
     },
     'JAVASCRIPT': {
         'vendor': {
@@ -95,6 +103,12 @@ PIPELINE = {
                 'js/jobs/resume.js',
             ),
             'output_filename': 'js/resume.js',
-        }
+        },
+        'drawChart': {
+            'source_filenames': (
+                'js/recommend.js',
+                ),
+            'output_filename': 'js/drawChart.js',
+        },
     },
 }
