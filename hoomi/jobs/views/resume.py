@@ -26,7 +26,7 @@ class AjaxableResponseMixin(object):
 class ResumeCreateView(LoginRequiredMixin,
                        AjaxableResponseMixin,
                        CreateView):
-    template_name = "jobs/main2.html"
+    template_name = "jobs/main.html"
     model = Resume
     fields = [
         "github_profile",
