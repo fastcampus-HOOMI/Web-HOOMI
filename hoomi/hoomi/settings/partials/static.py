@@ -95,6 +95,30 @@ PIPELINE = {
                 'js/jobs/resume.js',
             ),
             'output_filename': 'js/resume.js',
-        }
+        },
+        'recommend': {
+            'source_filenames': (
+              'css/barchart.css',
+              'css/bubblechart.css',
+              'css/hoovereffect.css',
+            ),
+            'output_filename': 'css/recommend.css',
+        },
     },
+    'JAVASCRIPT': {
+        'vender': {
+            'source_filenames': (
+              'js/d3.js',
+            ),
+            'output_filename': 'css/d3.js',
+        },
+        'drawChart': {
+            'source_filenames': (
+                'js/recommend/appendCompany.js',
+                'js/recommend/barChart.js',
+                'js/recommend/bubbleChart.js',
+                ),
+            'output_filename': 'css/drawChart.js',
+            },
+    }
 }
