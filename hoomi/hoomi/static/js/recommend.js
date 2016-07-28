@@ -156,7 +156,7 @@
             }
         });
         
-        d3.json("/api/skills/company/",function(error, language) {
+        d3.json("/api/skills/developer/",function(error, language) {
         var bubbleChart = new d3.svg.BubbleChart({
             supportResponsive: true,
             //container: => use @default
