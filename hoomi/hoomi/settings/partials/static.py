@@ -33,13 +33,16 @@ PIPELINE = {
                 'css/portfolio.jquery.css',
                 'css/overlay-bootstrap.min.css',
 
-                # Jquery
-                'css/jquery-ui.min.css',
-
+            ),
+            'output_filename': 'css/vendor.css',
+        },
+        'vendor-font-images': {
+            'source_filenames': (
                 # font-awesome
                 'css/font-awesome.min.css',
             ),
-            'output_filename': 'css/vendor.css',
+            'output_filename': 'css/vendor-font.css',
+            'variant': 'datauri',
         },
         'hoomi': {
             'source_filenames': (

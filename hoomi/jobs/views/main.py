@@ -19,5 +19,5 @@ class MainView(LoginRequiredMixin, View):
         return render(
             request,
             "jobs/main.html",
-            context=context,
+            context={},
         )
