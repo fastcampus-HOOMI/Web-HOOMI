@@ -56,7 +56,15 @@ PIPELINE = {
                 'css/style.css',
             ),
             'output_filename': 'css/resume.css'
-        }
+        },
+        'recommend': {
+            'source_filenames': (
+              'css/barchart.css',
+              'css/bubblechart.css',
+              'css/hoovereffect.css',
+            ),
+            'output_filename': 'css/recommend.css',
+        },
     },
     'JAVASCRIPT': {
         'vendor': {
@@ -96,21 +104,11 @@ PIPELINE = {
             ),
             'output_filename': 'js/resume.js',
         },
-        'recommend': {
-            'source_filenames': (
-              'css/barchart.css',
-              'css/bubblechart.css',
-              'css/hoovereffect.css',
-            ),
-            'output_filename': 'css/recommend.css',
-        },
-    },
-    'JAVASCRIPT': {
         'drawChart': {
             'source_filenames': (
                 'js/recommend.js',
                 ),
             'output_filename': 'js/drawChart.js',
         },
-    }
+    },
 }
