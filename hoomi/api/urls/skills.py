@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^$', SkillListAPIView.as_view(), name="all"),
     url(r'^user/$', UserSKillListAPIView.as_view(), name="user"),
     url(r'^company/$', CompanySkillsAPIView.as_view(), name="company"),
+    url(r'^developer/$', DeveloperAPIView.as_view(), name="developer"),
     url(r'^recommend/(?P<skill>\w+)/$', RecommendAPIView.as_view(), name="recommend"),
 ]

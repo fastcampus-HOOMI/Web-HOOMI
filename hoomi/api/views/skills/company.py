@@ -23,6 +23,6 @@ class CompanySkillsAPIView(ListAPIView):
                         else:
                             languages_count[job_tag] = 1
 
-        queryset = [{"name": key, "count": value} for key, value in languages_count.items() if value > 20]
+        queryset = [{"name": key, "count": value} for key, value in languages_count.items() if value >= 15]
 
         return queryset

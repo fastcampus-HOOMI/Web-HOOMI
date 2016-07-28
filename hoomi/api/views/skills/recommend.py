@@ -22,7 +22,10 @@ class RecommendAPIView(ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
 
-        user_skill = ["Pyton", "Java", "IOS", "JavaScript", "Pandas", "Android"]
+        current_user = self.request.user
+        developer = current_user.developer_set.first()
+
+        user_skill = developer.skills
         topSix = []
 
         for query in queryset:
