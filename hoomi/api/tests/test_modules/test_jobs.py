@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 
@@ -16,7 +17,10 @@ class TestJobs(TestCase):
             "last_name": test_last_name,
         }
 
-        signup_response = self.client.post("/api/signup/", data=signup_data)
+        signup_response = self.client.post(
+            "/api/signup/",
+            data=signup_data
+        )
 
         self.assertEquals(
             201,
@@ -42,10 +46,23 @@ class TestJobs(TestCase):
 
         self.assertTrue(self.token)
 
-    def test_get_skills_should_return_201(self):
-
+    def test_skills_all_should_return_201(self):
         response = self.client.get(
             "/api/skills/",
+            data={},
+            HTTP_AUTHORIZATION="JWT {token}".format(
+                token=self.token,
+            )
+        )
+
+        self.assertEquals(
+            200,
+            response.status_code,
+        )
+
+    def test_user_skills_should_return_200(self):
+        response = self.client.get(
+            "/api/skills/user/",
             data={},
             HTTP_AUTHORIZATION="JWT {token}".format(
                 token=self.token,
