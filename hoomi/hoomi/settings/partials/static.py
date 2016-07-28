@@ -110,5 +110,19 @@ PIPELINE = {
                 ),
             'output_filename': 'js/drawChart.js',
         },
+        'd3': {
+            'source_filenames': (
+                'js/d3/d3.min.js',
+                'js/d3/d3-transform.js',
+                'js/d3/extrarray.js',
+                'js/d3/misc.js',
+                'js/d3/micro-observer.js',
+                'js/d3/microplugin.js',
+                'js/d3/bubble-chart.js',
+                'js/d3/central-click.js',
+                'js/d3/lines.js',
+            ),
+            'output_filename': 'js/d3.js',
+        },
     },
 }
